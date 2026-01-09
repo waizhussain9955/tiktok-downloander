@@ -2,13 +2,13 @@ User-agent: *
 Allow: /
 
 # Block sensitive paths
+Disallow: /app/
+Disallow: /api/
 Disallow: /tests/
 Disallow: /venv/
-Disallow: /ENV/
 Disallow: /.git/
 Disallow: /admin/
-Disallow: /private/
 Disallow: /config/
 
 # Sitemap location
-Sitemap: https://example.com/sitemap.xml
+Sitemap: https://tik-tokdownloader.xyz/sitemap.xml
