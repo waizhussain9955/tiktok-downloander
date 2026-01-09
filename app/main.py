@@ -32,6 +32,12 @@ app.add_middleware(
 # Include API routes
 app.include_router(router, prefix=settings.api_prefix)
 
+# Health check at the root of the FastAPI app
+@app.get("/api/health")
+@app.get("/api/v1/health")
+async def health():
+    return {"status": "ok", "message": "Backend connected to index.html"}
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
