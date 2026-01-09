@@ -1,0 +1,43 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "api/index.py",
+            "use": "@vercel/python"
+        }
+    ],
+    "rewrites": [
+        {
+            "source": "/api/(.*)",
+            "destination": "api/index.py"
+        },
+        {
+            "source": "/sitemap.xml",
+            "destination": "public/sitemap.xml"
+        },
+        {
+            "source": "/robots.txt",
+            "destination": "public/robots.txt"
+        },
+        {
+            "source": "/static/(.*)",
+            "destination": "public/static/$1"
+        },
+        {
+            "source": "/favicon.ico",
+            "destination": "public/static/img/favicon.ico"
+        },
+        {
+            "source": "/(.*).html",
+            "destination": "public/static/$1.html"
+        },
+        {
+            "source": "/",
+            "destination": "public/static/index.html"
+        },
+        {
+            "source": "/(.*)",
+            "destination": "api/index.py"
+        }
+    ]
+}

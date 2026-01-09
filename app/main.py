@@ -43,17 +43,19 @@ def create_app() -> FastAPI:
     # Include API routes
     app.include_router(router, prefix=settings.api_prefix)
     
-    # Create static directory if it doesn't exist
-    if not os.path.exists("public/static"):
-        os.makedirs("public/static")
-    
-    # Mount static files
-    app.mount("/static", StaticFiles(directory="public/static"), name="static")
+    # Static files mounting (commented out or handled by Vercel for better performance)
+    # if os.path.exists("public/static"):
+    #     app.mount("/static", StaticFiles(directory="public/static"), name="static")
 
     @app.get("/")
     async def read_index():
         """Serve the frontend index.html."""
-        return FileResponse("public/static/index.html")
+        # On local, this works. On Vercel, we use vercel.json rewrites.
+        # But we keep it as a fallback.
+        try:
+            return FileResponse("public/static/index.html")
+        except:
+            return {"message": "TikTok Downloader API is running"}
     
     @app.on_event("startup")
     async def startup_event():
