@@ -34,6 +34,25 @@ body {
     font-family: var(--font-main);
     line-height: 1.6;
     position: relative;
+    background-image:
+        radial-gradient(at 0% 0%, rgba(254, 44, 85, 0.05) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(37, 244, 238, 0.05) 0px, transparent 50%);
+}
+
+/* Subtle Grid Pattern */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: -2;
+    pointer-events: none;
 }
 
 .container {
@@ -57,9 +76,9 @@ body {
 .blob {
     position: absolute;
     border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.15;
-    animation: move 20s infinite alternate;
+    filter: blur(120px);
+    opacity: 0.2;
+    animation: move 25s infinite alternate ease-in-out;
 }
 
 .blob-1 {
