@@ -3,7 +3,7 @@ Pydantic schemas for request/response validation.
 """
 
 from pydantic import BaseModel, Field, HttpUrl, field_validator
-from typing import Optional
+from typing import Optional, List
 import re
 
 
@@ -33,6 +33,13 @@ class TikTokDownloadRequest(BaseModel):
             )
         
         return v
+    
+    class Config:
+        json_schema_extra = {
+            "example": {
+                "url": "https://www.tiktok.com/@zachking/video/7123456789012345678"
+            }
+        }
 
 
 class VideoData(BaseModel):
@@ -40,7 +47,7 @@ class VideoData(BaseModel):
     
     video_id: str = Field(..., description="TikTok video ID")
     mp4_url: str = Field(..., description="Direct video download URL")
-    alternative_urls: Optional[list[str]] = Field(default=[], description="Alternative download URLs")
+    alternative_urls: Optional[List[str]] = Field(default=[], description="Alternative download URLs")
     author: str = Field(..., description="Username of the video creator")
     caption: Optional[str] = Field(None, description="Video caption/description")
     music: Optional[str] = Field(None, description="Background music title")
