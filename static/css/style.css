@@ -63,19 +63,9 @@ body {
 }
 
 /* Reference Image Background Style */
+/* Clean Base */
 body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background:
-        radial-gradient(circle at 20% 0%, rgba(254, 44, 85, 0.12) 0%, transparent 50%),
-        radial-gradient(circle at 90% 90%, rgba(37, 244, 238, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 50% 50%, #050505 0%, #000000 100%);
-    z-index: -2;
-    pointer-events: none;
+    display: none;
 }
 
 /* Remove animated blobs/mesh for this specific look */
@@ -90,7 +80,7 @@ body::after {
     width: 100%;
 }
 
-/* Background Blobs */
+/* Reference Image Background Style using Blobs */
 .bg-blobs {
     position: fixed;
     top: 0;
@@ -99,56 +89,66 @@ body::after {
     height: 100%;
     z-index: -1;
     overflow: hidden;
+    background-color: #050505;
+    /* Deep dark base */
 }
 
 .blob {
     position: absolute;
     border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.15;
-    animation: move 20s infinite alternate ease-in-out;
-}
-
-[data-theme="light"] .blob {
-    opacity: 0.08;
     filter: blur(120px);
+    opacity: 0.15;
+    animation: pulseGlow 10s infinite alternate ease-in-out;
 }
 
+/* Top Left Pink Glow */
 .blob-1 {
-    width: 500px;
-    height: 500px;
+    width: 600px;
+    height: 600px;
     background: var(--primary);
-    top: -150px;
-    left: -150px;
+    top: -200px;
+    left: -200px;
+    opacity: 0.18;
+    animation-delay: 0s;
 }
 
+/* Bottom Right Teal Glow */
 .blob-2 {
-    width: 400px;
-    height: 400px;
+    width: 600px;
+    height: 600px;
     background: var(--secondary);
-    bottom: -100px;
-    right: -100px;
+    bottom: -200px;
+    right: -200px;
+    opacity: 0.12;
     animation-delay: -5s;
 }
 
+/* Remove 3rd blob to match specific reference look */
 .blob-3 {
-    width: 300px;
-    height: 300px;
-    background: #7c3aed;
-    top: 40%;
-    left: 30%;
-    animation-delay: -10s;
+    display: none;
 }
 
-@keyframes move {
+@keyframes pulseGlow {
     0% {
-        transform: translate(0, 0);
+        transform: scale(1);
+        opacity: 0.12;
     }
 
     100% {
-        transform: translate(120px, 60px);
+        transform: scale(1.1);
+        opacity: 0.18;
     }
 }
+
+/* Light Mode Adjustment */
+[data-theme="light"] .bg-blobs {
+    background-color: #ffffff;
+}
+
+[data-theme="light"] .blob {
+    opacity: 0.05;
+}
+
 
 /* Navbar */
 .navbar {
