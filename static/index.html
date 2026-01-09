@@ -70,6 +70,9 @@
                     <a href="#features" class="nav-link">Features</a>
                     <a href="#faq" class="nav-link">FAQ</a>
                     <a href="/blog.html" class="nav-link">Blog</a>
+                    <button id="theme-toggle" class="theme-btn" aria-label="Toggle Theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
                 </div>
             </div>
         </nav>
@@ -85,8 +88,15 @@
 
                 <div class="converter-card">
                     <div class="input-group">
-                        <input type="text" id="tiktok-url" placeholder="Paste TikTok video link here..."
-                            autocomplete="off">
+                        <div class="input-wrapper">
+                            <i class="fas fa-link input-icon"></i>
+                            <input type="text" id="tiktok-url" placeholder="Paste TikTok video link here..."
+                                autocomplete="off">
+                            <button id="paste-btn" class="paste-btn" title="Paste from clipboard">
+                                <i class="fas fa-paste"></i>
+                                <span>Paste</span>
+                            </button>
+                        </div>
                         <button id="download-btn" class="primary-btn">
                             <span class="btn-text">Download Now</span>
                             <div class="loader"></div>

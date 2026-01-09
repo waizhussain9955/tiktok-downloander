@@ -4,6 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const resultContainer = document.getElementById('result-container');
     const errorBox = document.getElementById('error-box');
     const errorText = document.getElementById('error-text');
+    const pasteBtn = document.getElementById('paste-btn');
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
 
     downloadBtn.addEventListener('click', async () => {
         const url = tiktokUrl.value.trim();
@@ -44,6 +47,47 @@ document.addEventListener('DOMContentLoaded', () => {
             setLoading(false);
         }
     });
+
+    // Paste Functionality
+    if (pasteBtn) {
+        pasteBtn.addEventListener('click', async () => {
+            try {
+                const text = await navigator.clipboard.readText();
+                tiktokUrl.value = text;
+                // Add a small animation effect
+                pasteBtn.style.transform = 'scale(0.9)';
+                setTimeout(() => pasteBtn.style.transform = 'scale(1)', 100);
+            } catch (err) {
+                showError("Unable to paste. Please allow clipboard access.");
+            }
+        });
+    }
+
+    // Theme Toggle Functionality
+    const currentTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    updateThemeIcon(currentTheme);
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            let theme = document.documentElement.getAttribute('data-theme');
+            let newTheme = theme === 'dark' ? 'light' : 'dark';
+
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+    }
+
+    function updateThemeIcon(theme) {
+        if (!themeToggle) return;
+        const icon = themeToggle.querySelector('i');
+        if (theme === 'dark') {
+            icon.className = 'fas fa-sun';
+        } else {
+            icon.className = 'fas fa-moon';
+        }
+    }
 
     function setLoading(isLoading) {
         if (isLoading) {
