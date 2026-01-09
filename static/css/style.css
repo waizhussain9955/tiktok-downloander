@@ -291,6 +291,87 @@ body {
     color: var(--text-muted);
 }
 
+/* Professional Intro Section Styles */
+.intro-container {
+    position: relative;
+    padding: 3rem;
+    background: var(--glass);
+    border: 1px solid var(--border);
+    border-radius: 40px;
+    backdrop-filter: blur(25px);
+    text-align: left;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    margin-top: 2rem;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+}
+
+.intro-container:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.3);
+}
+
+.intro-header {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.intro-icon {
+    width: 70px;
+    height: 70px;
+    background: var(--gradient);
+    border-radius: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    color: white;
+    box-shadow: 0 15px 30px rgba(254, 44, 85, 0.3);
+    flex-shrink: 0;
+}
+
+.intro-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    line-height: 1.2;
+    margin: 0;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+}
+
+.intro-content {
+    font-size: 1.2rem;
+    line-height: 1.9;
+    color: var(--text-muted);
+}
+
+.intro-content p {
+    margin-bottom: 2rem;
+}
+
+.intro-content strong {
+    color: var(--secondary);
+    font-weight: 700;
+}
+
+.intro-accent {
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 150px;
+    height: 150px;
+    background: var(--primary);
+    filter: blur(80px);
+    opacity: 0.15;
+    pointer-events: none;
+}
+
 /* Loader */
 .loader {
     display: none;
@@ -657,6 +738,35 @@ body {
 
     .menu-toggle.active span:nth-child(3) {
         transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    /* Intro Responsive Fixes */
+    .intro-container {
+        padding: 2rem 1.5rem;
+        border-radius: 30px;
+    }
+
+    .intro-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+    }
+
+    .intro-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.8rem;
+    }
+
+    .intro-title {
+        text-align: center;
+        font-size: 2rem;
+    }
+
+    .intro-content {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        text-align: left;
     }
 }
 
