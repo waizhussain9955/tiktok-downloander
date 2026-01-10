@@ -40,20 +40,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Mobile Menu Logic
-    if (mobileMenuBtn && navMenu) {
-        mobileMenuBtn.addEventListener('click', () => {
+    const toggleMenu = () => {
+        if (mobileMenuBtn && navMenu) {
             mobileMenuBtn.classList.toggle('active');
             navMenu.classList.toggle('active');
-        });
+        }
+    };
 
-        // Close menu when clicking links
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', toggleMenu);
+    }
+
+    // Close menu when clicking links
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            if (mobileMenuBtn && navMenu) {
                 mobileMenuBtn.classList.remove('active');
                 navMenu.classList.remove('active');
-            });
+            }
         });
-    }
+    });
 
     // Download Functionality (Only if elements exist)
     if (downloadBtn && tiktokUrl && resultContainer && errorBox && errorText) {
